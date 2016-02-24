@@ -60,10 +60,46 @@ if (isset($disp)) {
 	echo "<br/>";
 //transforma o array em variaveis para guardar no bd
 	foreach ($disp as $value)
-	echo "<b>Disponível	: </b>" . $value . "</br>";
+	if($value = "seg-m"){
+		$valuesegm = $value;
+	}
+	if($value = "seg-n"){
+		$valuesegn = $value;
+	}
+	if($value = "ter-m"){
+		$valueterm = $value;
+	}
+	if($value = "ter-n"){
+		$valuetern = $value;
+	}
+	if($value = "qua-m"){
+		$valuequam = $value;
+	}
+	if($value = "qua-n"){
+		$valuequan = $value;
+	}
+	if($value = "qui-m"){
+		$valuequim = $value;
+	}
+	if($value = "qui-n"){
+		$valuequin = $value;
+	}
+	if($value = "sex-m"){
+		$valuesexm = $value;
+	}
+	if($value = "sex-n"){
+		$valuesexn = $value;
+	}
+	if($value = "sab-m"){
+		$valuesabm = $value;
+	}
+	if($value = "sab-n"){
+		$valuesabn = $value;
+	}
+
+		echo "<b>Disponível	: </b>" . $value . "</br>";
 	  mysql_query("INSERT INTO disponibilidade(segunda_feira_manha, segunda_feira_noite, terca_feira_manha,terca_feira_noite, quarta_feira_manha,quarta_feira_noite,quinta_feira_manha,quinta_feira_noite,sexta_feira_manha,sexta_feira_noite,sabado_manha,sabado_noite)
-	   VALUES ('$value','$value','$value','$value','$value','$value','$value','$value','$value','$value','$value','$value')") or die('Error: ' . mysql_error());
-	
+	   VALUES ('$valuesegm','$valuesegn','$valueterm', '$valuetern','$valuequam', '$valuequan', '$valuequim','$valuequin', '$valuesexm','$valuesexn', '$valuesabm', '$valuesabn')") or die('Error: ' . mysql_error());
 }
 if (isset($unid)) {
 	echo "</br>";
