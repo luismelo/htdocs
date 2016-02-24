@@ -58,48 +58,32 @@ if (isset($disp)) {
 	echo "$sch_level ";
 	echo "$rg_org";
 	echo "<br/>";
-//transforma o array em variaveis para guardar no bd
+//Verifica se checkbox ta marcado e envia para o bd
 	foreach ($disp as $value)
-	if($value = "seg-m"){
-		$valuesegm = $value;
-	}
-	if($value = "seg-n"){
-		$valuesegn = $value;
-	}
-	if($value = "ter-m"){
-		$valueterm = $value;
-	}
-	if($value = "ter-n"){
-		$valuetern = $value;
-	}
-	if($value = "qua-m"){
-		$valuequam = $value;
-	}
-	if($value = "qua-n"){
-		$valuequan = $value;
-	}
-	if($value = "qui-m"){
-		$valuequim = $value;
-	}
-	if($value = "qui-n"){
-		$valuequin = $value;
-	}
-	if($value = "sex-m"){
-		$valuesexm = $value;
-	}
-	if($value = "sex-n"){
-		$valuesexn = $value;
-	}
-	if($value = "sab-m"){
-		$valuesabm = $value;
-	}
-	if($value = "sab-n"){
-		$valuesabn = $value;
-	}
-
-		echo "<b>Disponível	: </b>" . $value . "</br>";
-	  mysql_query("INSERT INTO disponibilidade(segunda_feira_manha, segunda_feira_noite, terca_feira_manha,terca_feira_noite, quarta_feira_manha,quarta_feira_noite,quinta_feira_manha,quinta_feira_noite,sexta_feira_manha,sexta_feira_noite,sabado_manha,sabado_noite)
-	   VALUES ('$valuesegm','$valuesegn','$valueterm', '$valuetern','$valuequam', '$valuequan', '$valuequim','$valuequin', '$valuesexm','$valuesexn', '$valuesabm', '$valuesabn')") or die('Error: ' . mysql_error());
+	
+echo "<b>Disponível	: </b>" . $value . "</br>";
+	  }
+//Pegue os arrays pelo index antes de enviar para o banco MYSQL
+if (isset($_POST['disp'])) {
+	@$valuesegm = $disp[0];
+	@$valuesegn = $disp[6];
+	@$valueterm = $disp[1];
+	@$valuetern = $disp[7];
+	@$valuequam = $disp[2];
+	@$valuequan = $disp[8];
+	@$valuequim = $disp[3];
+	@$valuequin = $disp[9];
+	@$valuesexm = $disp[4];
+	@$valuesexn = $disp[10];
+	@$valuesabm = $disp[5];
+	@$valuesabn = $disp[11];
+   mysql_query("INSERT INTO disponibilidade
+   (segunda_feira_manha, segunda_feira_noite, terca_feira_manha, terca_feira_noite, quarta_feira_manha, quarta_feira_noite, quinta_feira_manha, quinta_feira_noite, sexta_feira_manha, sexta_feira_noite, sabado_manha, sabado_noite) 
+   VALUES ('$valuesegm', '$valuesegn','$valueterm', '$valuetern','$valuequam','$valuequan','$valuequim','$valuequin','$valuesexm','$valuesexn','$valuesabm','$valuesabn')" );
+    // Checkbox is selected
+} else {
+	
+   // Alternate code
 }
 if (isset($unid)) {
 	echo "</br>";

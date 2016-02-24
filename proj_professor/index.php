@@ -447,7 +447,7 @@ session_start()
 					<table class="tg">
 						<tr>
 							<th style="background: transparent; border: 0"></th>
-
+ <!--use os index do array para salvar no bd no próximo script -->
 							<th class="tg-yw4l">Segunda-Feira</th>
 							<th class="tg-yw4l">Terça-Feira</th>
 							<th class="tg-yw4l">Quarta-Feira</th>
@@ -458,43 +458,43 @@ session_start()
 						<tr>
 							<td class="tg-6k2t">Manhã</td>
 							<td class="tg-6k2t">
-							<input type="checkbox" name="disp[]" value="seg-m" >
+							<input type="checkbox" name="disp[0]" value="seg-m" >
 							</td>
 							<td class="tg-6k2t">
-							<input type="checkbox" name="disp[]" value="ter-m">
+							<input type="checkbox" name="disp[1]" value="ter-m">
 							</td>
 							<td class="tg-6k2t">
-							<input type="checkbox" name="disp[]" value="qua-m">
+							<input type="checkbox" name="disp[2]" value="qua-m">
 							</td>
 							<td class="tg-6k2t">
-							<input type="checkbox" name="disp[]" value="qui-m">
+							<input type="checkbox" name="disp[3]" value="qui-m">
 							</td>
 							<td class="tg-6k2t">
-							<input type="checkbox" name="disp[]" value="sex-m">
+							<input type="checkbox" name="disp[4]" value="sex-m">
 							</td>
 							<td class="tg-6k2t">
-							<input type="checkbox" name="disp[]" value="sab-m">
+							<input type="checkbox" name="disp[5]" value="sab-m">
 							</td>
 						</tr>
 						<tr>
 							<td class="tg-yw4l">Noite</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="disp[]" value="seg-n">
+							<input type="checkbox" name="disp[6]" value="seg-n">
 							</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="disp[]" value="ter-n" >
+							<input type="checkbox" name="disp[7]" value="ter-n" >
 							</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="disp[]" value="qua-n" >
+							<input type="checkbox" name="disp[8]" value="qua-n" >
 							</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="disp[]" value="qui-n" >
+							<input type="checkbox" name="disp[9]" value="qui-n" >
 							</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="disp[]" value="sex-n" >
+							<input type="checkbox" name="disp[10]" value="sex-n" >
 							</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="disp[]" value="sab-n" >
+							<input type="checkbox" name="disp[11]" value="sab-n" >
 							</td>
 						</tr>
 					</table> </label>
@@ -669,4 +669,6 @@ session_start()
 @$_SESSION['past_check_family'];
 @$_SESSION['past_check_sector'];
 @$_SESSION['past_check_will'];
+
+@$_SESSION['disp[0]'];
 ?>
