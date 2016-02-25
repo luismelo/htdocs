@@ -59,8 +59,8 @@ session_start()
 		<div id="wrapper">
 
 			<h1>Preencha seus dados pessoais:</h1>
-<!-- Início dos dados pessoais -->
-			<form id="form-pers" action="receiver.php" method="post">
+			<!-- Início dos dados pessoais -->
+			<form id="form-pers" action="receiver.php" onsubmit="return checkForm(this);" method="post">
 				<div class="col-2">
 					<label> Nome
 						<input placeholder="Digite seu nome completo"  name="name" tabindex="1">
@@ -90,7 +90,12 @@ session_start()
 				</div>
 				<div class="col-4">
 					<label> RG
-						<input placeholder="Digite seu RG" name="rg" tabindex="6">
+						<input placeholder="Digite seu RG" name="rg" required="required" tabindex="6">
+					</label>
+				</div>
+				<div class="col-5">
+					<label> CPF (Será seu usuário)
+						<input placeholder="Digite seu CPF" name="cpf" required="required" tabindex="7">
 					</label>
 				</div>
 				<div class="col-4">
@@ -104,14 +109,19 @@ session_start()
 					</label>
 				</div>
 				<div class="col-5">
-					<label> CPF
-						<input placeholder="Digite seu CPF" name="cpf" name="cpf" tabindex="7">
+					<label> Crie uma senha
+						<input type="password" placeholder="Crie uma senha"  required="required" name="pwd1" id="pwd1" name="pass" tabindex="7">
 					</label>
 				</div>
-
+				<div class="col-5">
+					<label> Repita sua senha <p id="validate-status"></p>
+						<input type="password" placeholder="Repita sua senha" required="required" name="pdw2" id="pwd2" name="pass2" tabindex="7">
+					</label>
+				</div>
+				
 				<div class="col-4">
 					<label> Email
-						<input placeholder="Digite seu email" name="email" name="email" tabindex="4">
+						<input placeholder="Digite seu email" name="email" required="required" name="email" tabindex="4">
 					</label>
 				</div>
 				<div class="col-4">
@@ -148,32 +158,32 @@ session_start()
 				</div>
 				<div class="col-4">
 					<label> Endereço
-						<input placeholder="Digite seu endereço" name="street" name="street" tabindex="1">
+						<input placeholder="Digite seu endereço"  name="street" tabindex="1">
 					</label>
 				</div>
 				<div class="col-5">
 					<label> Número
-						<input placeholder="Digite o número" name="street_num" name="street" tabindex="1">
+						<input placeholder="Digite o número" name="street_num" tabindex="1">
 					</label>
 				</div>
 				<div class="col-4">
 					<label> CEP
-						<input placeholder="Digite o CEP" name="cep" name="street" tabindex="1">
+						<input placeholder="Digite o CEP" name="cep" tabindex="1">
 					</label>
 				</div>
 				<div class="col-5">
 					<label> Bairro
-						<input placeholder="Digite o bairro" name="hood" name="street" tabindex="1">
+						<input placeholder="Digite o bairro" name="hood"  tabindex="1">
 					</label>
 				</div>
 				<div class="col-3">
 					<label> Cidade
-						<input placeholder="Digite a cidade" name="town" name="street" tabindex="1">
+						<input placeholder="Digite a cidade" name="town"  tabindex="1">
 					</label>
 				</div>
 				<div class="col-3">
 					<label> Telefone residencial
-						<input placeholder="Digite o telefone residencial" name="phone" name="phone" tabindex="3">
+						<input placeholder="Digite o telefone residencial" name="phone" tabindex="3">
 					</label>
 				</div>
 				<div class="col-3">
@@ -183,10 +193,10 @@ session_start()
 				</div>
 				<!-- Fim dados pessoais -->
 				<!-- Inicio Registro -->
-			<div class="col-full">
-			<h1>Registro Profissional:</h1>
-			</div>
-			
+				<div class="col-full">
+					<h1>Registro Profissional:</h1>
+				</div>
+
 				<div class="col-2">
 					<label> Pertence à algum conselho ou ordem?
 						<select name="concil" tabindex="5">
@@ -237,12 +247,12 @@ session_start()
 							<option value="to">Tocantins</option>
 						</select> </label>
 				</div>
-			
-			<div class="col-full">
-				<!--Fim do Registro-->
-				<!-- Formação Escolar -->
-			<h1>Formação Escolar:</h1>
-			</div>
+
+				<div class="col-full">
+					<!--Fim do Registro-->
+					<!-- Formação Escolar -->
+					<h1>Formação Escolar:</h1>
+				</div>
 				<div class="col-2">
 					<label> Curso:
 						<input placeholder="Digite o nome do curso" name="course" tabindex="1">
@@ -273,7 +283,7 @@ session_start()
 						Clique aqui para adicionar mais cursos!
 					</button>
 				</div>
-			
+
 				<div class="col-4">
 					<label> Possui diplomas dos cursos informados acima?
 						<select name="sch_dip_check">
@@ -283,16 +293,15 @@ session_start()
 							<option value="Trancado">Trancado</option>
 						</select> </label>
 				</div>
-				
+
 				<div class="col-2">
-					<label style="height: 121px">Quais os seus conhecimentos em informática? 		
-<textarea name="info_res" cols="50" rows="4" wrap="soft">Conte-nos um pouco dos seus conhecimentos em informática.</textarea> </label>
+					<label style="height: 121px">Quais os seus conhecimentos em informática? 						<textarea name="info_res" cols="50" rows="4" wrap="soft">Conte-nos um pouco dos seus conhecimentos em informática.</textarea> </label>
 				</div>
 				<!-- FIm da Formação Escolar -->
 				<!-- Inicio da Experiencia como professor -->
-			<div class="col-full">
-			<h1>Atividades Profissionais Relacionadas ao Ensino:</h1>
-			</div>
+				<div class="col-full">
+					<h1>Atividades Profissionais Relacionadas ao Ensino:</h1>
+				</div>
 				<div class="col-4">
 					<label> Já trabalhou como professor, instrutor ou palestrante?
 						<select name="teach_xp_check">
@@ -343,9 +352,9 @@ session_start()
 				</div>
 				<!-- Fim da Experiencia como professor -->
 				<!-- Inicio da Experiencia na área -->
-			<div class="col-full">
-			<h1>Experiência Profissional:</h1>
-			</div>
+				<div class="col-full">
+					<h1>Experiência Profissional:</h1>
+				</div>
 				<div class="col-4">
 					<label> Já trabalhou na sua área de formação?
 						<select name="no_teach_xp_check">
@@ -394,10 +403,10 @@ session_start()
 						Clique aqui para adicionar mais experiência!
 					</button>
 				</div>
-			<div class="col-full">
-				<!-- Fim da Experiencia na área -->
-			<h1>Disponibilidade de Horário:</h1>
-			</div>
+				<div class="col-full">
+					<!-- Fim da Experiencia na área -->
+					<h1>Disponibilidade de Horário:</h1>
+				</div>
 
 				<label>
 					<style type="text/css">
@@ -447,7 +456,7 @@ session_start()
 					<table class="tg">
 						<tr>
 							<th style="background: transparent; border: 0"></th>
- <!--use os index do array para salvar no bd no próximo script -->
+							<!--use os index do array para salvar no bd no próximo script -->
 							<th class="tg-yw4l">Segunda-Feira</th>
 							<th class="tg-yw4l">Terça-Feira</th>
 							<th class="tg-yw4l">Quarta-Feira</th>
@@ -458,48 +467,47 @@ session_start()
 						<tr>
 							<td class="tg-6k2t">Manhã</td>
 							<td class="tg-6k2t">
-							<input type="checkbox" name="disp[0]" value="seg-m" >
+							<input type="checkbox" name="disp[0]" value="seg-manha" >
 							</td>
 							<td class="tg-6k2t">
-							<input type="checkbox" name="disp[1]" value="ter-m">
+							<input type="checkbox" name="disp[1]" value="ter-manha">
 							</td>
 							<td class="tg-6k2t">
-							<input type="checkbox" name="disp[2]" value="qua-m">
+							<input type="checkbox" name="disp[2]" value="qua-manha">
 							</td>
 							<td class="tg-6k2t">
-							<input type="checkbox" name="disp[3]" value="qui-m">
+							<input type="checkbox" name="disp[3]" value="qui-manha">
 							</td>
 							<td class="tg-6k2t">
-							<input type="checkbox" name="disp[4]" value="sex-m">
+							<input type="checkbox" name="disp[4]" value="sex-manha">
 							</td>
 							<td class="tg-6k2t">
-							<input type="checkbox" name="disp[5]" value="sab-m">
+							<input type="checkbox" name="disp[5]" value="sab-manha">
 							</td>
 						</tr>
 						<tr>
 							<td class="tg-yw4l">Noite</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="disp[6]" value="seg-n">
+							<input type="checkbox" name="disp[6]" value="seg-noite">
 							</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="disp[7]" value="ter-n" >
+							<input type="checkbox" name="disp[7]" value="ter-noite" >
 							</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="disp[8]" value="qua-n" >
+							<input type="checkbox" name="disp[8]" value="qua-noite" >
 							</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="disp[9]" value="qui-n" >
+							<input type="checkbox" name="disp[9]" value="qui-noite" >
 							</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="disp[10]" value="sex-n" >
+							<input type="checkbox" name="disp[10]" value="sex-noite" >
 							</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="disp[11]" value="sab-n" >
+							<input type="checkbox" name="disp[11]" value="sab-noite" >
 							</td>
 						</tr>
 					</table> </label>
-			
-			
+
 				<div class="col-5">
 					<label> Já trabalhou na sequencial?
 						<select name="past_check">
@@ -589,13 +597,57 @@ session_start()
 						<input placeholder="Conte-nos sua motivação" name="past_check_will" tabindex="1">
 					</label>
 				</div>
-			
-			<div class="col-submit" style="font-size: 22px; color: #05123B">
-				<input type="checkbox"  required="required"/>
-				Afirmo que as informações acima são verdadeiras, sob pena de desqualificação da seleção caso haja alguma informação falsa ou contraditória.
 
-			</div>
-				<div class="col-submit">
+				<div class="col-submit" style="font-size: 22px; color: #05123B">
+					<input type="checkbox"  required="required"/>
+					Afirmo que as informações acima são verdadeiras, sob pena de desqualificação da seleção caso haja alguma informação falsa ou contraditória.
+
+				</div>
+	<script type="text/javascript">
+
+  function checkForm(form)
+  {
+    if(form.cpf.value == "") {
+      alert("Erro: CPF não pode ficar vazio!");
+      form.cpf.focus();
+      return false;
+    }
+    if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
+      if(form.pwd1.value.length < 6) {
+        alert("Erro: Senha deve possuir pelo menos 6 digitos!");
+        form.pwd1.focus();
+        return false;
+      }
+      if(form.pwd1.value == form.cpf.value) {
+    alert("Erro: A senha deve ser diferente do CPF!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[0-9]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Erro: Senha deve possuir pelo menos um número (0-9)!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[a-z]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Erro: Senha deve possuir pelo menos uma letra minúscula! (a-z)!");
+        form.pwd1.focus();
+        return false;
+      }
+      
+    } else {
+      alert("Erro: As senhas devem ser iguais!");
+      form.pwd1.focus();
+      return false;
+    }
+
+    alert("Você completou seu cadastro parabéns!");
+    return true;
+  }
+
+</script>
+<div class="col-submit">
 					<button id="submit" name="submit" class="submitbtn">
 						Prosseguir
 					</button>
@@ -613,7 +665,7 @@ session_start()
 	</body>
 </html>
 <?php
-
+md5($_SESSION['pwd2']);
 //Dados pessoais guardados em sessão!
 @$_SESSION['name'];
 @$_SESSION['born_date'];
