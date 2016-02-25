@@ -23,7 +23,8 @@ include "connection.php";
 @$town = $_REQUEST['town'];
 @$phone = $_REQUEST['phone'];
 @$cellphone = $_REQUEST['cellphone'];
-
+@$pass = $_REQUEST['pwd2'];
+echo "$pass";
 //Bloco de Registro Profissional
 $concil = $_REQUEST['concil'];
 $reg_num = $_REQUEST['reg_num'];
