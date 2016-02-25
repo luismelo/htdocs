@@ -24,7 +24,7 @@ include "connection.php";
 @$phone = $_REQUEST['phone'];
 @$cellphone = $_REQUEST['cellphone'];
 @$pass = $_REQUEST['pwd2'];
-echo "$pass";
+
 //Bloco de Registro Profissional
 $concil = $_REQUEST['concil'];
 $reg_num = $_REQUEST['reg_num'];
@@ -92,14 +92,14 @@ if (isset($unid)) {
 		echo "<b>Trabalhou na unidade: </b>" . $valueu . "</br>";
 }
 
-$SQL = "INSERT INTO professor_cadastro (nome, data_nascimento, idade, estado, cidade, nr_rg, rg_emi, org_rg, cpf, email, genero,
+$SQL = "INSERT INTO professor_cadastro (pass ,nome, data_nascimento, idade, estado, cidade, nr_rg, rg_emi, org_rg, cpf, email, genero,
  cc_brad, filhos, nr_filhos, endereco, nr_casa, cep, bairro, cidade_endereco, telefone, celular,
  conselho, nr_conselho, uf_conselho,
  curso, grau_escolaridade, ano_conclu, chk_diplomas, obs_info,
  exp_prof, nome_Inst_prof, tempo_prof, referencia_prof, telefone_referencia_prof,
  exp_outros, nome_Inst_outros, tempo_outros, referencia_outros, telefone_referencia_outros
  )
-  VALUES ('$name','$born_date','$age','$state','$city', '$rg' , '$rg_date','$rg_org','$cpf','$email','$gender', 
+  VALUES (sha1('$pass'),'$name','$born_date','$age','$state','$city', '$rg' , '$rg_date','$rg_org','$cpf','$email','$gender', 
  '$bank','$kids','$kids_num','$street','$street_num','$cep','$hood','$town','$phone','$cellphone',
  '$concil', '$reg_num', '$reg_uf',
  '$course', '$sch_level', '$sch_end', '$sch_dip_check', '$info_res',

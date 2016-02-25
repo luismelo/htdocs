@@ -115,7 +115,7 @@ session_start()
 				</div>
 				<div class="col-5">
 					<label> Repita sua senha <p id="validate-status"></p>
-						<input type="password" placeholder="Repita sua senha" required="required" name="pdw2" id="pwd2" name="pass2" tabindex="7">
+						<input type="password" placeholder="Repita sua senha" required="required" name="pwd2" id="pwd2" name="pass2" tabindex="7">
 					</label>
 				</div>
 				
@@ -665,7 +665,7 @@ session_start()
 	</body>
 </html>
 <?php
-md5($_SESSION['pwd2']);
+$_SESSION['pwd2'];
 //Dados pessoais guardados em sessão!
 @$_SESSION['name'];
 @$_SESSION['born_date'];
