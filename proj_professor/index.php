@@ -61,9 +61,14 @@ session_start()
 			<h1>Preencha seus dados pessoais:</h1>
 			<!-- Início dos dados pessoais -->
 			<form id="form-pers" action="receiver.php" onsubmit="return checkForm(this);" method="post">
-				<div class="col-2">
+				<div class="col-3">
 					<label> Nome
 						<input placeholder="Digite seu nome completo"  name="name" tabindex="1">
+					</label>
+				</div>
+				<div class="col-3">
+					<label> Sobrenome
+						<input placeholder="Digite seu sobrenome completo"  name="last_name" tabindex="1">
 					</label>
 				</div>
 				<div class="col-5">
@@ -83,7 +88,7 @@ session_start()
 						</select> </label>
 				</div>
 				<div class="col-4">
-					<label>
+					<label> Cidade
 						<select tabindex="4" id="cidades" name="cidades">
 							<option value=""></option>
 						</select> </label>
@@ -95,16 +100,16 @@ session_start()
 				</div>
 				<div class="col-5">
 					<label> CPF (Será seu usuário)
-						<input placeholder="Digite seu CPF" name="cpf" required="required" tabindex="7">
+						<input type="number" placeholder="Digite seu CPF" name="cpf" required="required" tabindex="7">
 					</label>
 				</div>
 				<div class="col-4">
-					<label> Data de Emissão
+					<label> Data de Emissão do RG
 						<input type="date" name="rg_date"  tabindex="6">
 					</label>
 				</div>
-				<div class="col-4">
-					<label> Orgão Emissor
+				<div class="col-5">
+					<label> Orgão Emissor do RG
 						<input type="text" placeholder="Digite o orgão emissor" name="rg_org"  tabindex="6">
 					</label>
 				</div>
@@ -118,7 +123,50 @@ session_start()
 						<input type="password" placeholder="Repita sua senha" required="required" name="pwd2" id="pwd2" name="pass2" tabindex="7">
 					</label>
 				</div>
-				
+					<script type="text/javascript">
+//Utiliza função simples para checar se as senhas são compatíveis e dita as regras de geração;
+  function checkForm(form)
+  {
+    if(form.cpf.value == "") {
+      alert("Erro: CPF não pode ficar vazio!");
+      form.cpf.focus();
+      return false;
+    }
+    if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
+      if(form.pwd1.value.length < 6) {
+        alert("Erro: Senha deve possuir pelo menos 6 digitos!");
+        form.pwd1.focus();
+        return false;
+      }
+      if(form.pwd1.value == form.cpf.value) {
+    alert("Erro: A senha deve ser diferente do CPF!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[0-9]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Erro: Senha deve possuir pelo menos um número (0-9)!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[a-z]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Erro: Senha deve possuir pelo menos uma letra minúscula! (a-z)!");
+        form.pwd1.focus();
+        return false;
+      }
+      
+    } else {
+      alert("Erro: As senhas devem ser iguais!");
+      form.pwd1.focus();
+      return false;
+    }
+
+    alert("Você completou seu cadastro parabéns!");
+    return true;
+  }
+
+</script>
 				<div class="col-4">
 					<label> Email
 						<input placeholder="Digite seu email" name="email" required="required" name="email" tabindex="4">
@@ -145,7 +193,7 @@ session_start()
 						<input name="kids" type="checkbox" class="js-switch">
 					</center>
 				</div>
-				<div class="col-2">
+				<div class="col-4">
 					<label> Caso possua filhos, diga-nos quantos:
 						<select name="kids_num" tabindex="5">
 							<option>Selecione</option>
@@ -564,16 +612,16 @@ session_start()
 						</tr>
 						<tr>
 							<td class="tg-031e">
-							<input type="checkbox" name="unid[]" value="unidade 1">
+							<input type="checkbox" name="unid[0]" value="1">
 							</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="unid[]" value="unidade 2">
+							<input type="checkbox" name="unid[1]" value="2">
 							</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="unid[]" value="unidade 3">
+							<input type="checkbox" name="unid[2]" value="3">
 							</td>
 							<td class="tg-yw4l">
-							<input type="checkbox" name="unid[]" value="unidade 4">
+							<input type="checkbox" name="unid[3]" value="4">
 							</td>
 						</tr>
 					</table>
@@ -603,50 +651,7 @@ session_start()
 					Afirmo que as informações acima são verdadeiras, sob pena de desqualificação da seleção caso haja alguma informação falsa ou contraditória.
 
 				</div>
-	<script type="text/javascript">
 
-  function checkForm(form)
-  {
-    if(form.cpf.value == "") {
-      alert("Erro: CPF não pode ficar vazio!");
-      form.cpf.focus();
-      return false;
-    }
-    if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
-      if(form.pwd1.value.length < 6) {
-        alert("Erro: Senha deve possuir pelo menos 6 digitos!");
-        form.pwd1.focus();
-        return false;
-      }
-      if(form.pwd1.value == form.cpf.value) {
-    alert("Erro: A senha deve ser diferente do CPF!");
-        form.pwd1.focus();
-        return false;
-      }
-      re = /[0-9]/;
-      if(!re.test(form.pwd1.value)) {
-        alert("Erro: Senha deve possuir pelo menos um número (0-9)!");
-        form.pwd1.focus();
-        return false;
-      }
-      re = /[a-z]/;
-      if(!re.test(form.pwd1.value)) {
-        alert("Erro: Senha deve possuir pelo menos uma letra minúscula! (a-z)!");
-        form.pwd1.focus();
-        return false;
-      }
-      
-    } else {
-      alert("Erro: As senhas devem ser iguais!");
-      form.pwd1.focus();
-      return false;
-    }
-
-    alert("Você completou seu cadastro parabéns!");
-    return true;
-  }
-
-</script>
 <div class="col-submit">
 					<button id="submit" name="submit" class="submitbtn">
 						Prosseguir
@@ -665,9 +670,10 @@ session_start()
 	</body>
 </html>
 <?php
-$_SESSION['pwd2'];
+@$_SESSION['pwd2'];
 //Dados pessoais guardados em sessão!
 @$_SESSION['name'];
+@$_SESSION['last_name'];
 @$_SESSION['born_date'];
 @$_SESSION['age'];
 @$_SESSION['estados'];

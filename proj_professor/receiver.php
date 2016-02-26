@@ -3,6 +3,7 @@
 include "connection.php";
 //Bloco de dados pessoais
 @$name = $_REQUEST['name'];
+@$last_name = $_REQUEST['last_name'];
 @$born_date = $_REQUEST['born_date'];
 @$age = $_REQUEST['age'];
 @$state = $_REQUEST['estados'];
@@ -24,6 +25,7 @@ include "connection.php";
 @$phone = $_REQUEST['phone'];
 @$cellphone = $_REQUEST['cellphone'];
 @$pass = $_REQUEST['pwd2'];
+
 
 //Bloco de Registro Profissional
 $concil = $_REQUEST['concil'];
@@ -54,6 +56,9 @@ $no_teach_xp_phone = $_REQUEST['no_teach_xp_phone'];
 //Bloco de disponibilidade
 @$disp = $_REQUEST['disp'];
 @$unid = $_REQUEST['unid'];
+
+//Finalizando o formulário
+@$past_check = $_REQUEST['past_check'];
 //recebe o array de disponibilidade
 if (isset($disp)) {
 	echo "$sch_level ";
@@ -86,25 +91,29 @@ if (isset($_POST['disp'])) {
 	
    // Alternate code
 }
-if (isset($unid)) {
+if (isset($_POST['unid'])) {
 	echo "</br>";
 	foreach ($unid as $valueu)
 		echo "<b>Trabalhou na unidade: </b>" . $valueu . "</br>";
+	@$uni1 = $unid[0];
+	@$uni2 = $unid[1];
+	@$uni3 = $unid[2];
+	@$uni4 = $unid[3];
 }
 
-$SQL = "INSERT INTO professor_cadastro (pass ,nome, data_nascimento, idade, estado, cidade, nr_rg, rg_emi, org_rg, cpf, email, genero,
+$SQL = "INSERT INTO professor_cadastro (pass ,nome,sobrenome ,data_nascimento, idade, estado, cidade, nr_rg, rg_emi, org_rg, cpf, email, genero,
  cc_brad, filhos, nr_filhos, endereco, nr_casa, cep, bairro, cidade_endereco, telefone, celular,
  conselho, nr_conselho, uf_conselho,
  curso, grau_escolaridade, ano_conclu, chk_diplomas, obs_info,
  exp_prof, nome_Inst_prof, tempo_prof, referencia_prof, telefone_referencia_prof,
- exp_outros, nome_Inst_outros, tempo_outros, referencia_outros, telefone_referencia_outros
+ exp_outros, nome_Inst_outros, tempo_outros, referencia_outros, telefone_referencia_outros,ex_sequencial,uni1,uni2,uni3,uni4
  )
-  VALUES (sha1('$pass'),'$name','$born_date','$age','$state','$city', '$rg' , '$rg_date','$rg_org','$cpf','$email','$gender', 
+  VALUES (sha1('$pass'),'$name','$last_name','$born_date','$age','$state','$city', '$rg' , '$rg_date','$rg_org','$cpf','$email','$gender', 
  '$bank','$kids','$kids_num','$street','$street_num','$cep','$hood','$town','$phone','$cellphone',
  '$concil', '$reg_num', '$reg_uf',
  '$course', '$sch_level', '$sch_end', '$sch_dip_check', '$info_res',
  '$teach_xp_check', '$teach_xp_job', '$teach_xp_time', '$teach_xp_ref', '$teach_xp_phone',
- '$no_teach_xp_check', '$no_teach_xp_job', '$no_teach_xp_time', '$no_teach_xp_ref', '$no_teach_xp_phone'
+ '$no_teach_xp_check', '$no_teach_xp_job', '$no_teach_xp_time', '$no_teach_xp_ref', '$no_teach_xp_phone','$past_check','$uni1','$uni2','$uni3','$uni4'
  )";
 
 mysql_query($SQL) or die("Não enviou os dados para o BD baseado no erro: " . mysql_error());
