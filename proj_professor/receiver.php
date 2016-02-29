@@ -1,6 +1,8 @@
+<script>window.location.href = "http://localhost/moodle/login/index.php";</script>
 <?php
 @session_start();
 include "connection.php";
+
 //Bloco de dados pessoais
 @$name = $_REQUEST['name'];
 @$last_name = $_REQUEST['last_name'];
@@ -59,15 +61,19 @@ $no_teach_xp_phone = $_REQUEST['no_teach_xp_phone'];
 
 //Finalizando o formulário
 @$past_check = $_REQUEST['past_check'];
+@$past_check=$_REQUEST['past_check_family'];
+@$past_check_sector =$_REQUEST['past_check_sector'];
+@$past_check_will = $_REQUEST['past_check_will'];
+
 //recebe o array de disponibilidade
 if (isset($disp)) {
-	echo "$sch_level ";
-	echo "$rg_org";
-	echo "<br/>";
+	//echo "$sch_level ";
+	//echo "$rg_org";
+	//echo "<br/>";
 //Verifica se checkbox ta marcado e envia para o bd
-	foreach ($disp as $value)
+	//foreach ($disp as $value)
 	
-echo "<b>Disponível	: </b>" . $value . "</br>";
+//echo "<b>Disponível	: </b>" . $value . "</br>";
 	  }
 //Pegue os arrays pelo index antes de enviar para o banco MYSQL
 if (isset($_POST['disp'])) {
@@ -92,9 +98,9 @@ if (isset($_POST['disp'])) {
    // Alternate code
 }
 if (isset($_POST['unid'])) {
-	echo "</br>";
+	//echo "</br>";
 	foreach ($unid as $valueu)
-		echo "<b>Trabalhou na unidade: </b>" . $valueu . "</br>";
+		//echo "<b>Trabalhou na unidade: </b>" . $valueu . "</br>";
 	@$uni1 = $unid[0];
 	@$uni2 = $unid[1];
 	@$uni3 = $unid[2];
@@ -106,14 +112,14 @@ $SQL = "INSERT INTO professor_cadastro (pass ,nome,sobrenome ,data_nascimento, i
  conselho, nr_conselho, uf_conselho,
  curso, grau_escolaridade, ano_conclu, chk_diplomas, obs_info,
  exp_prof, nome_Inst_prof, tempo_prof, referencia_prof, telefone_referencia_prof,
- exp_outros, nome_Inst_outros, tempo_outros, referencia_outros, telefone_referencia_outros,ex_sequencial,uni1,uni2,uni3,uni4
+ exp_outros, nome_Inst_outros, tempo_outros, referencia_outros, telefone_referencia_outros,ex_sequencial,uni1,uni2,uni3,uni4,parente,parente_setor,motivacao
  )
   VALUES (sha1('$pass'),'$name','$last_name','$born_date','$age','$state','$city', '$rg' , '$rg_date','$rg_org','$cpf','$email','$gender', 
  '$bank','$kids','$kids_num','$street','$street_num','$cep','$hood','$town','$phone','$cellphone',
  '$concil', '$reg_num', '$reg_uf',
  '$course', '$sch_level', '$sch_end', '$sch_dip_check', '$info_res',
  '$teach_xp_check', '$teach_xp_job', '$teach_xp_time', '$teach_xp_ref', '$teach_xp_phone',
- '$no_teach_xp_check', '$no_teach_xp_job', '$no_teach_xp_time', '$no_teach_xp_ref', '$no_teach_xp_phone','$past_check','$uni1','$uni2','$uni3','$uni4'
+ '$no_teach_xp_check', '$no_teach_xp_job', '$no_teach_xp_time', '$no_teach_xp_ref', '$no_teach_xp_phone','$past_check','$uni1','$uni2','$uni3','$uni4','$past_check','$past_check_sector','$past_check_will'
  )";
 
 mysql_query($SQL) or die("Não enviou os dados para o BD baseado no erro: " . mysql_error());

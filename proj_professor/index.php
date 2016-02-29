@@ -123,50 +123,49 @@ session_start()
 						<input type="password" placeholder="Repita sua senha" required="required" name="pwd2" id="pwd2" name="pass2" tabindex="7">
 					</label>
 				</div>
-					<script type="text/javascript">
-//Utiliza função simples para checar se as senhas são compatíveis e dita as regras de geração;
-  function checkForm(form)
-  {
-    if(form.cpf.value == "") {
-      alert("Erro: CPF não pode ficar vazio!");
-      form.cpf.focus();
-      return false;
-    }
-    if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
-      if(form.pwd1.value.length < 6) {
-        alert("Erro: Senha deve possuir pelo menos 6 digitos!");
-        form.pwd1.focus();
-        return false;
-      }
-      if(form.pwd1.value == form.cpf.value) {
-    alert("Erro: A senha deve ser diferente do CPF!");
-        form.pwd1.focus();
-        return false;
-      }
-      re = /[0-9]/;
-      if(!re.test(form.pwd1.value)) {
-        alert("Erro: Senha deve possuir pelo menos um número (0-9)!");
-        form.pwd1.focus();
-        return false;
-      }
-      re = /[a-z]/;
-      if(!re.test(form.pwd1.value)) {
-        alert("Erro: Senha deve possuir pelo menos uma letra minúscula! (a-z)!");
-        form.pwd1.focus();
-        return false;
-      }
-      
-    } else {
-      alert("Erro: As senhas devem ser iguais!");
-      form.pwd1.focus();
-      return false;
-    }
+				<script type="text/javascript">
+					//Utiliza função simples para checar se as senhas são compatíveis e dita as regras de geração;
+					function checkForm(form) {
+						if (form.cpf.value == "") {
+							alert("Erro: CPF não pode ficar vazio!");
+							form.cpf.focus();
+							return false;
+						}
+						if (form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
+							if (form.pwd1.value.length < 6) {
+								alert("Erro: Senha deve possuir pelo menos 6 digitos!");
+								form.pwd1.focus();
+								return false;
+							}
+							if (form.pwd1.value == form.cpf.value) {
+								alert("Erro: A senha deve ser diferente do CPF!");
+								form.pwd1.focus();
+								return false;
+							}
+							re = /[0-9]/;
+							if (!re.test(form.pwd1.value)) {
+								alert("Erro: Senha deve possuir pelo menos um número (0-9)!");
+								form.pwd1.focus();
+								return false;
+							}
+							re = /[a-z]/;
+							if (!re.test(form.pwd1.value)) {
+								alert("Erro: Senha deve possuir pelo menos uma letra minúscula! (a-z)!");
+								form.pwd1.focus();
+								return false;
+							}
 
-    alert("Você completou seu cadastro parabéns!");
-    return true;
-  }
+						} else {
+							alert("Erro: As senhas devem ser iguais!");
+							form.pwd1.focus();
+							return false;
+						}
 
-</script>
+						alert("Você completou seu cadastro parabéns!");
+						return true;
+					}
+
+				</script>
 				<div class="col-4">
 					<label> Email
 						<input placeholder="Digite seu email" name="email" required="required" name="email" tabindex="4">
@@ -652,11 +651,11 @@ session_start()
 
 				</div>
 
-<div class="col-submit">
+				<div class="col-submit">
 					<button id="submit" name="submit" class="submitbtn">
 						Prosseguir
 					</button>
-
+						<a style="font-size: 16px; color: #648C3A;" href="http://localhost/moodle/login/index.php"> Se já possui cadastro, clique aqui!</a>
 					<script type="text/javascript">
 						var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
