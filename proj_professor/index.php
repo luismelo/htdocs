@@ -10,10 +10,13 @@ session_start()
 		<meta name="author" content="Jake Rocheleau">
 		<link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico">
 		<link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico">
-		<link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+		<link rel="stylesheet" type="text/css" media="all" href="css/style.css">
+		<link rel="stylesheet" type="text/css" media="all" href="css/form-elements.css">
 		<link rel="stylesheet" type="text/css" media="all" href="css/switchery.min.css">
+		<link rel="stylesheet" type="text/css" media="all" href="css/radios-to-slider.css">
 		<script type="text/javascript" src="js/switchery.min.js"></script>
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.radios-to-slider.js"></script>
 
 	</head>
 	<script type="text/javascript">
@@ -62,64 +65,56 @@ session_start()
 			<!-- Início dos dados pessoais -->
 			<form id="form-pers" action="receiver.php" onsubmit="return checkForm(this);" method="post">
 				<div class="col-3">
-					<label> Nome
-						<input placeholder="Digite seu nome completo"  name="name" tabindex="1">
+					<label> Nome:
+						<input placeholder="Digite seu nome"  name="name" tabindex="1">
 					</label>
-				</div>
-				<div class="col-3">
-					<label> Sobrenome
-						<input placeholder="Digite seu sobrenome completo"  name="last_name" tabindex="1">
+				
+					<label> Sobrenome:
+						<input placeholder="Digite seu sobrenome"  name="last_name" tabindex="1">
 					</label>
+					
+					<label> CPF (Será seu usuário):
+						<input type="number" placeholder="Digite seu CPF" name="cpf" required="required" tabindex="7">
+					</label>
+				
 				</div>
 				<div class="col-5">
-					<label> Data de Nascimento
+					<label> Data de Nascimento:
 						<input type="date" placeholder="Qual sua idade?" name="born_date" style="size: auto;"tabindex="2">
 					</label>
-				</div>
-				<div class="col-5">
-					<label> Idade
+				<label> Idade:
 						<input placeholder="Qual sua idade?" name="age" style="size: 20px;" tabindex="6">
 					</label>
 				</div>
 				<div class="col-4">
-					<label> Local de Nascimento
+					<label> Local de Nascimento:
 						<select tabindex="4" id="estados" name="estados">
 							<option value=""></option>
 						</select> </label>
-				</div>
-				<div class="col-4">
-					<label> Cidade
+					<label> Cidade:
 						<select tabindex="4" id="cidades" name="cidades">
 							<option value=""></option>
 						</select> </label>
 				</div>
 				<div class="col-4">
-					<label> RG
+					<label> RG:
 						<input placeholder="Digite seu RG" name="rg" required="required" tabindex="6">
 					</label>
-				</div>
-				<div class="col-5">
-					<label> CPF (Será seu usuário)
-						<input type="number" placeholder="Digite seu CPF" name="cpf" required="required" tabindex="7">
-					</label>
-				</div>
-				<div class="col-4">
-					<label> Data de Emissão do RG
+				
+					<label> Data de Emissão do RG:
 						<input type="date" name="rg_date"  tabindex="6">
 					</label>
-				</div>
-				<div class="col-5">
-					<label> Orgão Emissor do RG
+				
+					<label> Orgão Emissor do RG:
 						<input type="text" placeholder="Digite o orgão emissor" name="rg_org"  tabindex="6">
 					</label>
 				</div>
 				<div class="col-5">
-					<label> Crie uma senha
+					<label> Crie uma senha:
 						<input type="password" placeholder="Crie uma senha"  required="required" name="pwd1" id="pwd1" name="pass" tabindex="7">
 					</label>
-				</div>
-				<div class="col-5">
-					<label> Repita sua senha <p id="validate-status"></p>
+				
+					<label> Repita sua senha:
 						<input type="password" placeholder="Repita sua senha" required="required" name="pwd2" id="pwd2" name="pass2" tabindex="7">
 					</label>
 				</div>
@@ -193,15 +188,29 @@ session_start()
 					</center>
 				</div>
 				<div class="col-4">
-					<label> Caso possua filhos, diga-nos quantos:
-						<select name="kids_num" tabindex="5">
-							<option>Selecione</option>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5 ou mais</option>
-						</select> </label>
+					<label> Caso possua filhos, diga-nos quantos:<br>
+						<div id="radios">
+    <input id="option1" name="num_kids" type="radio" value="1">
+    <label for="option1">1</label>
+
+    <input id="option2" name="num_kids" type="radio" value="2">
+    <label for="option2">2</label>
+
+    <input id="option3" name="num_kids" type="radio" value="3">
+    <label for="option3">3</label>
+
+    <input id="option4" name="num_kids" type="radio" value="4">
+    <label for="option4">4</label>
+
+    <input id="option5" name="num_kids" type="radio" value="5+">
+    <label for="option5">5 ou mais</label>
+</div>
+					<script>
+  //  $(document).ready( function(){
+        //$("#radios").radiosToSlider();
+   // });
+</script>
+					 </label>
 				</div>
 				<div class="col-4">
 					<label> Endereço
@@ -363,7 +372,7 @@ session_start()
 						<p>
 							Caso "Sim", preencher com suas experiências no ensino:
 						</p>
-						<input class="void" />
+					
 					</label>
 				</div>
 				<div class="col-3">
@@ -416,7 +425,7 @@ session_start()
 						<p>
 							Caso "Sim", preencher com suas experiências comprovadas (carteira assinada):
 						</p>
-						<input class="void" />
+						
 					</label>
 				</div>
 				<div class="col-3">
@@ -566,7 +575,7 @@ session_start()
 				</div>
 				<div class="col-4">
 					<label> Se "Sim", marque a unidade(s) que já trabalhou:
-						<input class="void" />
+						
 					</label>
 				</div>
 				<div class="col-2" >
