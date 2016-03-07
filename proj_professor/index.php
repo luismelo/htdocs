@@ -92,7 +92,7 @@ session_start()
 						<input type="date" class="sign-up-input" placeholder="Qual sua idade?" id="bday" onchange="submitBday()" name="born_date" style="size: auto;"tabindex="2">
 					 
 				  Idade:
-						<input placeholder=""  class="sign-up-input" id="resultBday" name="age">
+						<input placeholder=""  class="sign-up-input" id="resultBday" name="age" readonly="readonly">
 					 
 				
 					  Local de Nascimento:
